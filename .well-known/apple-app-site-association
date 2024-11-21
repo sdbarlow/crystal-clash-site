@@ -1,0 +1,10 @@
+# .well-known/apple-app-site-association
+{
+  "applinks": {
+    "apps": [],
+    "details": [{
+      "appID": "49HQMCM2DX.com.sethbarlow.crystal-clash",
+      "paths": ["/callback"]
+    }]
+  }
+}
