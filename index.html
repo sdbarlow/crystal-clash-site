@@ -5,7 +5,9 @@
 </head>
 <body>
     <script>
-        window.close();
+        if (window.location.href.includes('callback')) {
+            window.location.replace('crystal-clash://snap-kit/oauth2' + window.location.search);
+        }
     </script>
 </body>
 </html>
