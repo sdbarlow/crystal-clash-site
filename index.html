@@ -2,80 +2,11 @@
 <html>
 <head>
     <title>Redirecting to Crystal Clash...</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background: #f5f5f5;
-            text-align: center;
-        }
-        .container {
-            padding: 20px;
-        }
-        .loading {
-            margin: 20px 0;
-        }
-    </style>
 </head>
 <body>
-    <div class="container">
-        <h2>Redirecting to Crystal Clash...</h2>
-        <div class="loading">Please wait</div>
-    </div>
-    
     <script>
-        function redirectToApp() {
-            // Get all URL parameters
-            const urlParams = new URLSearchParams(window.location.search);
-            const code = urlParams.get('code');
-            const state = urlParams.get('state');
-            
-            // Construct the deep link URL with all parameters
-            let deepLink = 'crystal-clash://snap-kit/oauth2';
-            if (code || state) {
-                deepLink += '?';
-                if (code) deepLink += `code=${code}`;
-                if (code && state) deepLink += '&';
-                if (state) deepLink += `state=${state}`;
-            }
-
-            // Try to redirect immediately
-            window.location.href = deepLink;
-
-            // Fallback: If still on page after 1 second, show additional options
-            setTimeout(() => {
-                if (document.visibilityState !== 'hidden') {
-                    document.body.innerHTML = `
-                        <div class="container">
-                            <h2>Open Crystal Clash?</h2>
-                            <p>Click the button below if you're not automatically redirected:</p>
-                            <button onclick="window.location.href='${deepLink}'" style="
-                                padding: 12px 24px;
-                                font-size: 16px;
-                                background: #000;
-                                color: white;
-                                border: none;
-                                border-radius: 8px;
-                                cursor: pointer;
-                            ">
-                                Open Crystal Clash
-                            </button>
-                            <p style="margin-top: 20px; color: #666;">
-                                If the button doesn't work, make sure you have Crystal Clash installed.
-                            </p>
-                        </div>
-                    `;
-                }
-            }, 1000);
-        }
-
-        // Start redirect process when page loads
-        window.onload = redirectToApp;
+        // Redirect to your app using custom scheme
+        window.location.replace('crystal-clash://snap-kit/oauth2' + window.location.search);
     </script>
 </body>
 </html>
